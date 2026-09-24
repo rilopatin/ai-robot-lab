@@ -10,6 +10,11 @@ node_modules/
 dist/
 *.local
 
+# Local SQLite state
+/src/api/App_Data/
+*.db-wal
+*.db-shm
+
 # Editors and operating systems
 .vscode/
 .idea/

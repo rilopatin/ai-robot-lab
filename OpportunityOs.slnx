@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/api/">
+    <Project Path="src/api/OpportunityOs.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Project Path="tests/OpportunityOs.Api.Tests/OpportunityOs.Api.Tests.csproj" />
+</Solution>

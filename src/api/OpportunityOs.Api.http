@@ -1,0 +1,85 @@
+@OpportunityOs_Api_HostAddress = http://localhost:5084
+
+### List goals
+GET {{OpportunityOs_Api_HostAddress}}/api/goals
+Accept: application/json
+
+### Create a goal
+POST {{OpportunityOs_Api_HostAddress}}/api/goals
+Content-Type: application/json
+
+{
+  "objective": "Earn the first $10–50 online using AI and code as leverage.",
+  "constraints": "$0 upfront; no clients; minimal live communication; legal and platform-compliant; payouts must work for Israel or Cyprus.",
+  "successCriteria": "Receive at least one real payout."
+}
+
+### Reopen a goal and load its full history
+GET {{OpportunityOs_Api_HostAddress}}/api/goals/{{goalId}}
+Accept: application/json
+
+### Create an opportunity
+POST {{OpportunityOs_Api_HostAddress}}/api/goals/{{goalId}}/opportunities
+Content-Type: application/json
+
+{
+  "title": "Example self-service marketplace opportunity",
+  "source": "https://example.com",
+  "whyNow": "A newly visible demand signal makes a small test worthwhile.",
+  "moneyMechanism": "Marketplace sales",
+  "competition": "Moderate",
+  "geography": "Available in Israel and Cyprus",
+  "payoutRules": "Direct payout after the platform threshold is reached",
+  "aiRestrictions": "AI-assisted work is allowed when reviewed by a human",
+  "friction": "Listing review",
+  "probabilityToFirstDollar": 25,
+  "reusableValue": "Reusable research and production workflow"
+}
+
+### Define a zero-cost experiment
+POST {{OpportunityOs_Api_HostAddress}}/api/opportunities/{{opportunityId}}/experiments
+Content-Type: application/json
+
+{
+  "hypothesis": "One focused listing can attract qualified organic traffic.",
+  "action": "Publish one compliant listing and observe it for seven days.",
+  "timeBudgetMinutes": 180,
+  "budgetCents": 0,
+  "successCondition": "At least one sale or a strong leading signal.",
+  "stopCondition": "No meaningful traffic after seven days."
+}
+
+### Record evidence
+POST {{OpportunityOs_Api_HostAddress}}/api/experiments/{{experimentId}}/evidence
+Content-Type: application/json
+
+{
+  "views": 30,
+  "installs": null,
+  "downloads": null,
+  "users": null,
+  "clicks": 4,
+  "sales": 1,
+  "revenueCents": 1200,
+  "rejectionOrWaitlist": "",
+  "platformFriction": "Approval took one day.",
+  "feedback": "First buyer completed checkout without assistance."
+}
+
+### Record or replace the current decision
+PUT {{OpportunityOs_Api_HostAddress}}/api/experiments/{{experimentId}}/decision
+Content-Type: application/json
+
+{
+  "outcome": "SCALE",
+  "reason": "The experiment produced a real sale within the stop window."
+}
+
+### Update the experiment result
+PUT {{OpportunityOs_Api_HostAddress}}/api/experiments/{{experimentId}}/result
+Content-Type: application/json
+
+{
+  "status": "Completed",
+  "result": "One sale generated 1200 cents in revenue."
+}
